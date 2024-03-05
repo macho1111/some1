@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/styles.css">
+        <title>染め直し選択ページ</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    </head>
+    <body>
+        <div id="app">
+            <h1 class="center-text">
+                染め直し依頼ページ
+            </h1>
+            <div v-if="showGallery">
+                <h2 class="center-text">
+                    染め直したいのはどのような服ですか？
+                    <br>クリックで選択してください
+                </h2>
+                <p class="center-text qatext">
+                    種類がわからない
+                </p>
+                <div class="image-gallery">
+                    <div v-on:click="showForm('Ｔシャツ', 1000)" onmouseover="showTooltip('　Ｔシャツ　', event)" onmouseout="hideTooltip()" onclick="hideTooltip()">
+                        <img src="../somemono/images/T-shirt.png" alt="T-shirt">
+                    </div>
+                    <div v-on:click="showForm('Yシャツ', 1500)" onmouseover="showTooltip('　Yシャツ　', event)" onmouseout="hideTooltip()" onclick="hideTooltip()">
+                        <img src="../somemono/images/Y-shirt.png" alt="Y-shirt">
+                    </div>
+                    <div v-on:click="showForm('ジャケット', 2000)" onmouseover="showTooltip('　ジャケット　', event)" onmouseout="hideTooltip()" onclick="hideTooltip()">
+                        <img src="../somemono/images/Jacket.png" alt="Jacket">
+                    </div>
+                    <div v-on:click="showForm('ダウンジャケット', 2500)" onmouseover="showTooltip('　ダウンジャケット　', event)" onmouseout="hideTooltip()" onclick="hideTooltip()">
+                        <img src="../somemono/images/Downjacket.png" alt="Downjacket">
+                    </div>
+                    <br>
+                    <div v-on:click="showForm('パーカー', 3000)" onmouseover="showTooltip('　パーカー　', event)" onmouseout="hideTooltip()" onclick="hideTooltip()">
+                        <img src="../somemono/images/hoodie.png" alt="hoodie">
+                    </div>
+                    <div v-on:click="showForm('ワンピース', 3500)" onmouseover="showTooltip('　ワンピース　', event)" onmouseout="hideTooltip()" onclick="hideTooltip()">
+                        <img src="../somemono/images/onepiece.png" alt="onepiece">
+                    </div>
+                    <div v-on:click="showForm('ジーンズ', 4000)" onmouseover="showTooltip('　ジーンズ　', event)" onmouseout="hideTooltip()" onclick="hideTooltip()">
+                        <img src="../somemono/images/Jeans.png" alt="Jins">
+                    </div>
+                    <div v-on:click="showForm('スカート', 4500)" onmouseover="showTooltip('　スカート　', event)" onmouseout="hideTooltip()" onclick="hideTooltip()">
+                        <img src="../somemono/images/skirt.png" alt="skirt">
+                    </div>
+                </div>
+            </div>
+            <div v-else>
+                <form>
+                    <label for="itemName">選択している服:</label>
+                    <input type="text" id="itemName" name="itemName" v-model="selectedItem">
+                    
+                    <!-- 他のフォーム要素も同様に追加 -->
+                    <button type="button" @click="showGallery = true">選択ページに戻る</button>
+
+                    <p>価格: {{ formatAmount(selectedPrice) }}</p>
+                    <!-- 選択し -->
+                    <div id="questions">
+                        <label>性別を選択してください:</label>
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="male">男性</label>
+                    
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">女性</label>
+                    
+                        <input type="radio" id="other" name="gender" value="other">
+                        <label for="other">その他</label>
+                    </div>
+                    
+                    <div id="questions">
+                        <div>
+                          <label for="material">素材を選択してください</label>
+                          <select id="material">
+                            <option>選択してください</option>
+                            <option>綿</option>
+                            <option>麻</option>
+                            <option>レーヨン</option>
+                            <option>ウール</option>
+                            <option>ナイロン</option>
+                            <option>キュプラ</option>
+                          </select>
+                        </div>    
+                    </div>
+                    <div id="questions">
+                        <div>
+                            <label for="size">サイズを選択してください</label>
+                            <select id="size" name="size">
+                                <option value="">選択してください</option>
+                                <option value="s">S</option>
+                                <option value="m">M</option>
+                                <option value="l">L</option>
+                                <option value="xl">XL</option>
+                                <!-- 他に必要なサイズを追加 -->
+                            </select>
+                        </div>
+                    </div>
+                    <div id="amount-display">
+                        <p id="amount">合計：{{ formatAmount(selectedPrice + totalAmount) }}</p>
+                    </div>
+                    <button type="button" @click="submitForm">引き続き依頼する</button>
+                    <button type="button" >注文にすすむ</button>
+                </form>
+            </div>
+        </div>
+        <div id="tooltip"></div>
+        <script src="javascripts/hukusentaku.js"></script>
+    </body>
+</html>
