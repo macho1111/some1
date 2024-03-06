@@ -25,5 +25,18 @@
 
 #questions {
     margin-top: 20px;
-  }
+}
   
+#color-options {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+#color-options div {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    margin-right: 5px;
+    border: 2px solid #000000;
+}

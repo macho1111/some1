@@ -22,30 +22,29 @@
                     種類がわからない
                 </p>
                 <div class="image-gallery">
-                    <div v-on:click="showForm('Ｔシャツ', 1000)" onmouseover="showTooltip('　Ｔシャツ　', event)" onmouseout="hideTooltip()" onclick="hideTooltip()">
-                        <img src="../somemono/images/T-shirt.png" alt="T-shirt">
+                    <div v-on:click="showForm('T-shirt', 1000, $event)" @mouseover="showTooltip('　Ｔシャツ　', $event)"@mouseout="hideTooltip()" @click="hideTooltip()">
+                        <img src="../somemono/images/T-shirt_ffffff.png" alt="T-shirt">
                     </div>
-                    <div v-on:click="showForm('Yシャツ', 1500)" onmouseover="showTooltip('　Yシャツ　', event)" onmouseout="hideTooltip()" onclick="hideTooltip()">
-                        <img src="../somemono/images/Y-shirt.png" alt="Y-shirt">
+                    <div v-on:click="showForm('Y-shirt', 1500, $event)" @mouseover="showTooltip('　Yシャツ　', $event)"@mouseout="hideTooltip()" @click="hideTooltip()">
+                        <img src="../somemono/images/Y-shirt_ffffff.png" alt="Y-shirt">
                     </div>
-                    <div v-on:click="showForm('ジャケット', 2000)" onmouseover="showTooltip('　ジャケット　', event)" onmouseout="hideTooltip()" onclick="hideTooltip()">
-                        <img src="../somemono/images/Jacket.png" alt="Jacket">
+                    <div v-on:click="showForm('Jacket', 2000, $event)" @mouseover="showTooltip('　ジャケット　', $event)"@mouseout="hideTooltip()" @click="hideTooltip()">
+                        <img src="../somemono/images/Jacket_ffffff.png" alt="Jacket">
                     </div>
-                    <div v-on:click="showForm('ダウンジャケット', 2500)" onmouseover="showTooltip('　ダウンジャケット　', event)" onmouseout="hideTooltip()" onclick="hideTooltip()">
-                        <img src="../somemono/images/Downjacket.png" alt="Downjacket">
+                    <div v-on:click="showForm('Downjacket', 2500, $event)" @mouseover="showTooltip('　ダウンジャケット　', $event)"@mouseout="hideTooltip()" @click="hideTooltip()">
+                        <img src="../somemono/images/Downjacket_ffffff.png" alt="Downjacket">
                     </div>
-                    <br>
-                    <div v-on:click="showForm('パーカー', 3000)" onmouseover="showTooltip('　パーカー　', event)" onmouseout="hideTooltip()" onclick="hideTooltip()">
-                        <img src="../somemono/images/hoodie.png" alt="hoodie">
+                    <div v-on:click="showForm('hoodie', 3000, $event)" @mouseover="showTooltip('　パーカー　', $event)"@mouseout="hideTooltip()" @click="hideTooltip()">
+                        <img src="../somemono/images/hoodie_ffffff.png" alt="hoodie">
                     </div>
-                    <div v-on:click="showForm('ワンピース', 3500)" onmouseover="showTooltip('　ワンピース　', event)" onmouseout="hideTooltip()" onclick="hideTooltip()">
-                        <img src="../somemono/images/onepiece.png" alt="onepiece">
+                    <div v-on:click="showForm('onepiece', 3500, $event)" @mouseover="showTooltip('　ワンピース　', $event)"@mouseout="hideTooltip()" @click="hideTooltip()">
+                        <img src="../somemono/images/onepiece_ffffff.png" alt="onepiece">
                     </div>
-                    <div v-on:click="showForm('ジーンズ', 4000)" onmouseover="showTooltip('　ジーンズ　', event)" onmouseout="hideTooltip()" onclick="hideTooltip()">
-                        <img src="../somemono/images/Jeans.png" alt="Jins">
+                    <div v-on:click="showForm('Jeans', 4000, $event)" @mouseover="showTooltip('　ジーンズ　', $event)"@mouseout="hideTooltip()" @click="hideTooltip()">
+                        <img src="../somemono/images/Jeans_ffffff.png" alt="Jins">
                     </div>
-                    <div v-on:click="showForm('スカート', 4500)" onmouseover="showTooltip('　スカート　', event)" onmouseout="hideTooltip()" onclick="hideTooltip()">
-                        <img src="../somemono/images/skirt.png" alt="skirt">
+                    <div v-on:click="showForm('skirt', 4500, $event)" @mouseover="showTooltip('　スカート　', $event)"@mouseout="hideTooltip()" @click="hideTooltip()">
+                        <img src="../somemono/images/skirt_ffffff.png" alt="skirt">
                     </div>
                 </div>
             </div>
@@ -98,12 +97,26 @@
                             </select>
                         </div>
                     </div>
+                    <div>
+                    <p>染物の色を選択してください</p>
+                    <div id="color-options">
+                        <div v-on:click="updateColor('#ffffff')" :style="{ backgroundColor: '#ffffff' }"></div>
+                        <div v-on:click="updateColor('#ff0000')" :style="{ backgroundColor: '#ff0000' }"></div>
+                        <div v-on:click="updateColor('#00ff00')" :style="{ backgroundColor: '#00ff00' }"></div>
+                        <div v-on:click="updateColor('#0000ff')" :style="{ backgroundColor: '#0000ff' }"></div>
+                    </div>
+                    <img :src="selectedImage" alt="Selected Item">
+                    </div>
+                    
                     <div id="amount-display">
                         <p id="amount">合計：{{ formatAmount(selectedPrice + totalAmount) }}</p>
                     </div>
                     <button type="button" @click="submitForm">引き続き依頼する</button>
                     <button type="button" >注文にすすむ</button>
+
+
                 </form>
+
             </div>
         </div>
         <div id="tooltip"></div>
