@@ -98,13 +98,15 @@
                         </div>
                     </div>
                     <div>
-                    <p>染物の色を選択してください</p>
+                    <p>染めたい色を選択してください</p>
                     <div id="color-options">
                         <div v-on:click="updateColor('#ffffff')" :style="{ backgroundColor: '#ffffff' }"></div>
                         <div v-on:click="updateColor('#ff0000')" :style="{ backgroundColor: '#ff0000' }"></div>
                         <div v-on:click="updateColor('#00ff00')" :style="{ backgroundColor: '#00ff00' }"></div>
                         <div v-on:click="updateColor('#0000ff')" :style="{ backgroundColor: '#0000ff' }"></div>
+                        <div v-on:click="updateColor('#meisai')" :style="{ backgroundImage: 'url(../somemono/images/meisai.jpg)' }"></div>
                     </div>
+                    <p>　　　↓サンプル画像↓</p>
                     <img :src="selectedImage" alt="Selected Item">
                     </div>
                     
